@@ -38,6 +38,10 @@ exports.register_post = [
     .isLowercase()
     .withMessage("Password must contain at least one uppercase character.")
     .escape(),
+  body("confirmPassword", "Passwords do not match.")
+    .trim()
+    .custom((value, { req }) => value === req.body.password)
+    .escape(),
   // proceed to process request after validation and sanitization
   (req, res, next) => {
     // extract validation errors from a request
