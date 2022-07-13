@@ -1,0 +1,24 @@
+extends layout 
+
+block content 
+    h1= title 
+
+    if user
+        form(action="" method="POST")
+            label(for="title") Title 
+            input#title(type="text" name="title")
+
+            label(for="body") Body 
+            input#body(type="text" name="body")
+
+            button(type="submit") Post
+    else 
+        p You are not authorized to post. Please 
+            a(href='/login') login 
+            |   or
+            a(href="/register")  register
+            |  for an account.
+
+    if (errors)
+        for error in errors 
+            li= error.msg
