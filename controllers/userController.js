@@ -57,6 +57,7 @@ exports.register_post = [
         lastName: req.body.lastName,
         username: req.body.username,
         password: hashedPassword,
+        member: false,
       });
 
       if (!errors.isEmpty()) {
