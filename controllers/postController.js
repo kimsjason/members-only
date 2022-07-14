@@ -49,3 +49,15 @@ exports.post_post = [
     }
   },
 ];
+
+exports.delete_post_get = function (req, res, next) {
+  if (req.isAuthenticated() && req.user.admin) {
+    Post.deleteOne({ _id: req.params.id }).exec(function (err) {
+      if (err) console.log(err);
+      else {
+        console.log("Deleted");
+      }
+    });
+  }
+  res.redirect("/");
+};
