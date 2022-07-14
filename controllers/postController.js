@@ -1,6 +1,12 @@
 const Post = require("../models/post");
 const { body, validationResult } = require("express-validator");
 
+const colors = ["yellow", "orange", "pink", "purple", "green"];
+const randomColor = (colors) => {
+  const index = Math.floor(Math.random() * colors.length);
+  return colors[index];
+};
+
 exports.post_get = function (req, res, next) {
   if (req.isAuthenticated()) {
     res.render("post", { title: "New Post", user: req.user._id });
@@ -30,6 +36,7 @@ exports.post_post = [
       body: req.body.body,
       username: req.user.username,
       datePosted: new Date(),
+      color: randomColor(colors),
     });
 
     if (!errors.isEmpty()) {

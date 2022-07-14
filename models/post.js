@@ -6,6 +6,7 @@ const PostSchema = new Schema({
   body: { type: String, required: true },
   username: { type: String, required: true },
   datePosted: { type: Date, required: true },
+  color: { type: String, required: true },
 });
 
 module.exports = mongoose.model("Post", PostSchema);

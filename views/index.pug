@@ -28,7 +28,7 @@ block content
   
   div.posts
     for post in posts 
-      div.post
+      div.post(class=post.color)
         div.text
           p.title= post.title 
           p.body= post.body 
