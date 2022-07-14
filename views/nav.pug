@@ -1,0 +1,23 @@
+block nav
+    nav  
+      h1 Members Only Post-It Board
+
+      ul
+        li.home
+          a(href='/') Home
+        if user 
+          li.new-post
+            a(href='/post') New Post
+          if !member
+            li.membership 
+              a(href='/membership') Become a Member
+          if !admin
+            li.admin
+              a(href='/admin') Become an Admin
+          li.log-out
+            a(href='/log-out') Log Out
+        else 
+          li.register
+            a(href='/register') Register
+          li.login
+            a(href='/login') Login

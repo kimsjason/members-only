@@ -5,26 +5,7 @@ block content
   h1= title
   p Welcome to #{title}
 
-  nav  
-    ul
-      li
-        a(href='/') Home
-      if user 
-        li
-          a(href='/post') New Post
-        if !member
-          li 
-            a(href='/membership') Become a Member
-        if !admin
-          li 
-            a(href='/admin') Become an Admin
-        li
-          a(href='/log-out') Log Out
-      else 
-        li 
-          a(href='/register') Register
-        li 
-          a(href='/login') Login
+
   
   div.posts
     for post in posts 
