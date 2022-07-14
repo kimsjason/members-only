@@ -44,4 +44,7 @@ router.get("/post", postController.post_get);
 /* POST new post page */
 router.post("/post", postController.post_post);
 
+/* GET delete post page */
+router.get("/delete-post/:id", postController.delete_post_get);
+
 module.exports = router;
