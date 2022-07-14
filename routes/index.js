@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router();
 
-const Post = require("../models/post");
+const homeController = require("../controllers/homeController");
 const userController = require("../controllers/userController");
 const loginController = require("../controllers/loginController");
 const membershipController = require("../controllers/membershipController");
@@ -9,25 +9,7 @@ const adminController = require("../controllers/adminController");
 const postController = require("../controllers/postController");
 
 /* GET home page. */
-router.get("/", function (req, res, next) {
-  Post.find().exec(function (err, posts) {
-    if (err) return next(err);
-    if (req.isAuthenticated()) {
-      res.render("index", {
-        title: "Members Only",
-        user: req.user._id,
-        member: req.user.member,
-        admin: req.user.admin,
-        posts: posts,
-      });
-    } else {
-      res.render("index", {
-        title: "Members Only",
-        posts: posts,
-      });
-    }
-  });
-});
+router.get("/", homeController.index);
 
 /* GET register page. */
 router.get("/register", userController.register_get);
