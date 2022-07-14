@@ -1,0 +1,15 @@
+extends layout 
+
+block content 
+    h1= title 
+    if user
+        form(action="" method="POST")
+            label(for="admin-code") Admin Code: 
+            input#admin-code(type="password" name="adminCode" required)
+            button(type="submit") Submit
+    else 
+        p You are not authorized to view this page. Please 
+            a(href='/login') login 
+            |   or
+            a(href="/register")  register
+            |  for an account.
