@@ -25,3 +25,14 @@ block content
         li 
           a(href='/login') Login
   
+  div.posts
+    for post in posts 
+      div.post 
+        p= post.title 
+        p= post.body 
+        if user && member
+          p= post.username
+          p= post.datePosted
+        else 
+          p anon
+        
