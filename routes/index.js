@@ -5,6 +5,7 @@ const Post = require("../models/post");
 const userController = require("../controllers/userController");
 const loginController = require("../controllers/loginController");
 const membershipController = require("../controllers/membershipController");
+const adminController = require("../controllers/adminController");
 const postController = require("../controllers/postController");
 
 /* GET home page. */
@@ -16,6 +17,7 @@ router.get("/", function (req, res, next) {
         title: "Members Only",
         user: req.user._id,
         member: req.user.member,
+        admin: req.user.admin,
         posts: posts,
       });
     } else {
@@ -47,6 +49,12 @@ router.get("/membership", membershipController.membership_get);
 
 /* POST membership page */
 router.post("/membership", membershipController.membership_post);
+
+/* GET admin page */
+router.get("/admin", adminController.admin_get);
+
+/* POST admin page */
+router.post("/admin", adminController.admin_post);
 
 /* GET new post page */
 router.get("/post", postController.post_get);
