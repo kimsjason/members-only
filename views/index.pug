@@ -1,6 +1,7 @@
 extends layout
 
 block content
+
   h1= title
   p Welcome to #{title}
 
@@ -27,12 +28,20 @@ block content
   
   div.posts
     for post in posts 
-      div.post 
-        p= post.title 
-        p= post.body 
-        if user && member
-          p= post.username
-          p= post.datePosted
-        else 
-          p anon
-        
+      div.post
+        div.text
+          p.title= post.title 
+          p.body= post.body 
+
+        div.info
+          if user && member
+            span Posted on
+            | &nbsp
+            p.date-posted= post.datePosted
+            | &nbsp
+            span by
+            | &nbsp
+            p.username= post.username
+        if admin
+          a.delete-post(href=`/delete-post/${post._id}`)
+            span.material-symbols-outlined delete
