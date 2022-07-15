@@ -1,4 +1,5 @@
 extends layout 
+
 block content 
     h1= title 
     form(action="" method="POST")
@@ -19,5 +20,6 @@ block content
         button(type="submit") Register
 
     if errors
-        for error in errors 
-            li!=error.msg
+        ul.errors
+            for error in errors 
+                li!=error.msg

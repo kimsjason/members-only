@@ -1,4 +1,4 @@
-extends layout 
+extends layout
 
 block content 
     h1= title 
@@ -9,16 +9,17 @@ block content
             input#title(type="text" name="title")
 
             label(for="body") Body 
-            input#body(type="text" name="body")
+            textarea#body( name="body")
 
             button(type="submit") Post
     else 
         p You are not authorized to post. Please 
             a(href='/login') login 
-            |   or
+            |   or 
             a(href="/register")  register
             |  for an account.
 
     if (errors)
-        for error in errors 
-            li= error.msg
+        ul.errors
+            for error in errors 
+                li= error.msg
