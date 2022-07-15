@@ -1,8 +1,291 @@
+:root {
+  --sticky-yellow: #fbf8cc;
+  --sticky-orange: #fde4cf;
+  --sticky-pink: #ffcfd2;
+  --sticky-purple: #cfbaf0;
+  --sticky-green: #b9fbc0;
+}
+
+/* general styles */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  font-size: 62.5%;
+}
+
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
-  color: #00B7FF;
+  display: inline-block;
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  transform: scale(1.05);
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 5rem;
+}
+
+nav,
+h1 {
+  text-align: center;
+}
+
+/* form styles */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  margin: 50px 100px;
+}
+
+label {
+  font-size: 2.4rem;
+}
+
+input {
+  height: 60px;
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 2.4rem;
+  border: 1px solid #cccccc;
+}
+
+textarea {
+  height: 250px;
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 2.4rem;
+  border: 1px solid #cccccc;
+}
+
+button {
+  align-self: center;
+  width: 400px;
+  height: 60px;
+  border-radius: 10px;
+  margin-top: 25px;
+  font-size: 2.8rem;
+  font-weight: bold;
+  border: 1px solid #cccccc;
+  box-shadow: 1px 5px 3px;
+}
+
+button:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+button:active {
+  transform: scale(1);
+}
+
+ul.errors,
+.authorization-message {
+  margin: 50px 100px;
+  text-align: center;
+  font-size: 3.2rem;
+}
+
+/* nav styles */
+nav {
+  font-size: 4rem;
+}
+
+nav > ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 25px 0;
+  list-style-type: none;
+}
+
+/* post styles */
+.posts {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 25px;
+  margin: 50px 0;
+}
+
+.post {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  padding: 25px;
+  flex-direction: column;
+}
+
+.post > .text > .title {
+  margin-bottom: 15px;
+  font-weight: bold;
+  font-size: 3.2rem;
+}
+
+.post > .text > .body {
+  font-size: 2.4rem;
+}
+
+.post > .info {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  font-size: 1.6rem;
+  color: #999999;
+  text-align: right;
+}
+
+.info > * {
+  display: inline;
+}
+
+.delete-post {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  font-size: 3rem;
+  color: #cccccc;
+  background: none;
+  border: none;
+}
+
+.delete-post:hover {
+  transform: scale(1.05);
+  color: #333333;
+}
+
+.delete-post:active {
+  transform: scale(1);
+}
+
+.pink {
+  background: var(--sticky-pink);
+}
+
+.yellow {
+  background: var(--sticky-yellow);
+}
+
+.orange {
+  background: var(--sticky-orange);
+}
+
+.purple {
+  background: var(--sticky-purple);
+}
+
+.green {
+  background: var(--sticky-green);
+}
+
+@media only screen and (min-width: 1000px) {
+  /* general styles */
+  h1 {
+    font-size: 4rem;
+  }
+
+  /* nav styles */
+  nav {
+    font-size: 3rem;
+  }
+
+  nav > ul {
+    flex-direction: row;
+    justify-content: center;
+    gap: 50px;
+  }
+
+  /* form styles */
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 50px auto;
+    width: 500px;
+  }
+
+  label {
+    font-size: 2rem;
+  }
+
+  input {
+    height: 40px;
+    font-size: 2rem;
+  }
+
+  textarea {
+    font-size: 2rem;
+  }
+
+  button {
+    align-self: center;
+    width: 400px;
+    height: 60px;
+    border-radius: 10px;
+    font-size: 2.8rem;
+    font-weight: bold;
+    border: 1px solid #cccccc;
+    box-shadow: 1px 5px 3px;
+  }
+
+  button:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+  }
+
+  button:active {
+    transform: scale(1);
+  }
+
+  ul.errors,
+  .authorization-message {
+    margin: 0 100px;
+    font-size: 3.2rem;
+  }
+
+  /* post styles */
+  .post {
+    width: 200px;
+    height: 200px;
+    padding: 15px;
+  }
+
+  .post > .text > .title {
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 2rem;
+  }
+
+  .post > .text > .body {
+    font-size: 1.6rem;
+  }
+
+  .post > .info {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 1.2rem;
+    color: #999999;
+    text-align: right;
+  }
+
+  .delete-post {
+    top: 10px;
+    right: 10px;
+  }
 }
