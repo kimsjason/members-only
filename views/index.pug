@@ -3,10 +3,6 @@ extends layout
 block content
 
   h1= title
-  p Welcome to #{title}
-
-
-  
   div.posts
     for post in posts 
       div.post(class=post.color)
