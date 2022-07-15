@@ -3,6 +3,9 @@ const { body, validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
 
 exports.register_get = function (req, res, next) {
+  if (req.isAuthenticated()) {
+    res.redirect("/");
+  }
   res.render("register", { title: "Sign Up" });
 };
 

@@ -2,7 +2,11 @@ const { body, validationResult } = require("express-validator");
 const passport = require("passport");
 
 exports.login_get = function (req, res, next) {
-  res.render("login", { title: "Login" });
+  if (req.isAuthenticated()) {
+    res.redirect("/");
+  } else {
+    res.render("login", { title: "Login" });
+  }
 };
 
 exports.login_post = [
