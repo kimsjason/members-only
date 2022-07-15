@@ -2,14 +2,16 @@ extends layout
 
 block content 
     h1= title 
-    if user
+    if member
+        p.authorization-message You are already a member.
+    else if user
         form(action="" method="POST")
             label(for="member-code") Member Code: 
             input#member-code(type="password" name="memberCode" required)
             button(type="submit") Submit
     else 
-        p You are not authorized to view this page. Please 
+        p.authorization-message You are not authorized to view this page. Please 
             a(href='/login') login 
-            |   or
-            a(href="/register")  register
+            |   or 
+            a(href="/register") register
             |  for an account.
