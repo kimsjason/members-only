@@ -4,7 +4,12 @@ const { body, validationResult } = require("express-validator");
 
 exports.membership_get = function (req, res, next) {
   if (req.isAuthenticated()) {
-    res.render("membership", { title: "Become a Member", user: req.user._id });
+    res.render("membership", {
+      title: "Become a Member",
+      user: req.user._id,
+      member: req.user.member,
+      admin: req.user.admin,
+    });
   } else {
     res.render("membership", { title: "Become a Member" });
   }
@@ -31,17 +36,21 @@ exports.membership_post = [
         if (req.body.memberCode !== memberCode.code) {
           res.render("membership", {
             title: "Become a Member",
+            user: req.user._id,
+            member: req.user.member,
+            admin: req.user.admin,
+          });
+        } else {
+          // member code is correct - update user's membership status
+          User.findOneAndUpdate(
+            { _id: req.user._id },
+            { member: true },
+            { new: false }
+          ).exec(function (err, user) {
+            if (err) return next(err);
+            res.redirect("/");
           });
         }
-        // member code is correct - update user's membership status
-        User.findOneAndUpdate(
-          { _id: req.user._id },
-          { member: true },
-          { new: false }
-        ).exec(function (err, user) {
-          if (err) return next(err);
-          res.redirect("/");
-        });
       });
     }
   },

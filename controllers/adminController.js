@@ -4,7 +4,12 @@ const { body, validationResult } = require("express-validator");
 
 exports.admin_get = function (req, res, next) {
   if (req.isAuthenticated()) {
-    res.render("admin", { title: "Become an Admin", user: req.user._id });
+    res.render("admin", {
+      title: "Become an Admin",
+      user: req.user._id,
+      member: req.user.member,
+      admin: req.user.admin,
+    });
   } else {
     res.render("admin", { title: "Become an Admin" });
   }
@@ -32,6 +37,8 @@ exports.admin_post = [
           res.render("admin", {
             title: "Become an Admin",
             user: req.user._id,
+            member: req.user.member,
+            admin: req.user.admin,
           });
         } else {
           // admin code is correct - update user's admin status

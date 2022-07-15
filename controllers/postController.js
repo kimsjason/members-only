@@ -9,7 +9,12 @@ const randomColor = (colors) => {
 
 exports.post_get = function (req, res, next) {
   if (req.isAuthenticated()) {
-    res.render("post", { title: "New Post", user: req.user._id });
+    res.render("post", {
+      title: "New Post",
+      user: req.user._id,
+      member: req.user.member,
+      admin: req.user.admin,
+    });
   } else {
     res.render("post", { title: "New Post" });
   }
@@ -44,6 +49,8 @@ exports.post_post = [
       res.render("post", {
         title: "New Post",
         user: req.user._id,
+        member: req.user.member,
+        admin: req.user.admin,
         errors: errors.array(),
       });
     } else {
@@ -60,7 +67,7 @@ exports.post_post = [
 exports.delete_post_get = function (req, res, next) {
   if (req.isAuthenticated() && req.user.admin) {
     Post.deleteOne({ _id: req.params.id }).exec(function (err) {
-      if (err) console.log(err);
+      if (err) next(err);
       else {
         console.log("Deleted");
       }
